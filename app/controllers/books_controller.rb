@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   before_action :authenticate_user!
-  before_action :correct_user, only: [:edit]
+  before_action :current_user, only: [:edit]
   def show
   	@book = Book.find(params[:id])
     @book_new = Book.new
@@ -33,7 +33,7 @@ class BooksController < ApplicationController
   def update
   	@book = Book.find(params[:id])
   	if @book.update(book_params)
-  		redirect_to @book, notice: "successfully updated book!"
+  		redirect_to book_path(@book.id), notice: "successfully updated book!"
   	else #if文でエラー発生時と正常時のリンク先を枝分かれにしている。
       flash[:notice] = "error"
   		render :edit

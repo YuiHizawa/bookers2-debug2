@@ -18,7 +18,7 @@
 					<td>
 						<%= link_to (@book.user) do %>
 						<%= attachment_image_tag(@book.user, :profile_image, :fill, 100, 100, fallback: "no-image-mini.jpg") %><br>
-						<%= @book.user.name %>
+						<%= @book.user %>
 						<% end %>
 					</td>
 					<td><%= link_to @book.title, @book %></td>
